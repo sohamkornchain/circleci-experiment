@@ -37,14 +37,15 @@ jobs:
       #     docker_layer_caching: true
 
       # - run:
-      #     name: Install Docker client
-      #     command: |
-      #       set -x
-      #       VER="18.06.3-ce"
-      #       curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
-      #       tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-      #       mv /tmp/docker/* /usr/bin
-      #       nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
-      #       uname -a
-      #       volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
+          name: Install Docker client
+          command: |
+             apk add docker-cli
+            # set -x
+            # VER="18.06.3-ce"
+            # curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+            # tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            # mv /tmp/docker/* /usr/bin
+            # nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+            # uname -a
+            
       - run: yarn ci:docker

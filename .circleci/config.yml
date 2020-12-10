@@ -44,5 +44,5 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
             nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
-            apt-get install sudo
+            uname -a
       - run: sudo yarn ci:docker

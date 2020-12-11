@@ -9,7 +9,6 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: example12
       - image: redis:latest
-      - image: docker:17.05.0-ce-git
 
     working_directory: ~/repo
 
@@ -36,10 +35,9 @@ jobs:
       # - setup_remote_docker:
       #     docker_layer_caching: true
 
-      # - run:
+      - run:
           name: Install Docker client
           command: |
-             apk add docker-cli
             # set -x
             # VER="18.06.3-ce"
             # curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
@@ -47,5 +45,5 @@ jobs:
             # mv /tmp/docker/* /usr/bin
             # nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
             # uname -a
-            
+            apk add docker-cli
       - run: yarn ci:docker
